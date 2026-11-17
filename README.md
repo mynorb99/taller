@@ -1,16 +1,24 @@
 # Taller Torque
 
-La aplicación Laravel está en [`laravel/`](./laravel/). El archivo [`taller.html`](./taller.html) se conserva como referencia de la versión anterior.
+Aplicación Laravel para administrar órdenes de trabajo, cotizaciones, clientes, inventario, caja y garantías. Usa SQLite como base de datos predeterminada.
 
-Para iniciar:
+## Puesta en marcha
+
+Requisitos: PHP 8.3 o superior y Composer.
 
 ```powershell
-Set-Location .\laravel
 composer install
+php artisan key:generate
 php artisan migrate --seed
 php artisan serve
 ```
 
-Abre `http://127.0.0.1:8000`. Al crear la cuenta inicial, el seeder genera una contraseña aleatoria y la muestra en la consola; guárdala y cámbiala antes de desplegar. Los requisitos y detalles del proyecto están en [`laravel/README.md`](./laravel/README.md).
+Abre `http://127.0.0.1:8000`. Al crear por primera vez la cuenta `admin`, el seeder genera una contraseña aleatoria y la muestra en la consola. Guárdala al ejecutar `php artisan migrate --seed`; el seeder no cambia la contraseña de una cuenta existente. Configura credenciales propias antes de desplegar la aplicación.
 
-La migración de clientes enlaza también las órdenes que ya existían.
+La base de datos SQLite se guarda en `database/database.sqlite`.
+
+## Verificación
+
+```powershell
+php artisan test
+```
